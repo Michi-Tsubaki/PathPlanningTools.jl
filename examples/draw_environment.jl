@@ -8,10 +8,13 @@ using InteractiveUtils
 using Pkg
 
 # ╔═╡ 426d7377-9d6c-44de-96f1-edd3820e50b5
-Pkg.develop(path="..")
+Pkg.activate("..")
 
 # ╔═╡ fd765e4a-17b4-43d8-a62c-c8c168b18bbe
 using LinearAlgebra, Plots
+
+# ╔═╡ 8fe1ba52-d4c7-4dfd-a8d0-46d6d3ffd8fd
+using PlutoUI
 
 # ╔═╡ f20a66b4-0177-11f0-31a1-25c46f6480d3
 using PathPlanningTools
@@ -20,6 +23,9 @@ using PathPlanningTools
 md"""
 ## 経路計画をする前に，空間の定義・描画をしてみる
 """
+
+# ╔═╡ 5dc3ecee-f043-43a8-8ad4-ffac25431f8a
+gr()
 
 # ╔═╡ 9f7d9099-b321-4268-bc16-680cbc290ded
 md"""
@@ -99,13 +105,21 @@ md"""
 """
 
 # ╔═╡ efc0ea4b-ff67-4775-834c-44bdd227fc91
-plot = visualize_path(trajectory, obstacles, example_agent, example_space)
+plot = visualize_path([trajectory], obstacles, [example_agent], example_space)
+
+# ╔═╡ 9dd6a301-87cb-44f8-8725-09b9b705b48c
+anim = animate_trajectory([trajectory], obstacles, [example_agent], example_space, "draw_environment.gif")
+
+# ╔═╡ 0ece985e-e2c5-451e-85c7-1eb873be92c8
+PlutoUI.LocalResource("draw_environment.gif")
 
 # ╔═╡ Cell order:
 # ╟─9dc0c995-4978-4799-a4b5-5265cc8530ca
 # ╠═70ad29cc-95a8-4de0-9953-19821d51c7db
 # ╠═426d7377-9d6c-44de-96f1-edd3820e50b5
 # ╠═fd765e4a-17b4-43d8-a62c-c8c168b18bbe
+# ╠═8fe1ba52-d4c7-4dfd-a8d0-46d6d3ffd8fd
+# ╠═5dc3ecee-f043-43a8-8ad4-ffac25431f8a
 # ╠═f20a66b4-0177-11f0-31a1-25c46f6480d3
 # ╟─9f7d9099-b321-4268-bc16-680cbc290ded
 # ╠═e69107ab-d46b-406c-851d-ca526dc5d722
@@ -119,3 +133,5 @@ plot = visualize_path(trajectory, obstacles, example_agent, example_space)
 # ╠═507c553a-275e-4055-b64c-695f5020a228
 # ╟─26ef5688-cb39-4165-b906-83b31e92ad45
 # ╠═efc0ea4b-ff67-4775-834c-44bdd227fc91
+# ╠═9dd6a301-87cb-44f8-8725-09b9b705b48c
+# ╠═0ece985e-e2c5-451e-85c7-1eb873be92c8
